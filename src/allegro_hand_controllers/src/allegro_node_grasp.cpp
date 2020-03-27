@@ -50,6 +50,19 @@ void AllegroNodeGrasp::libCmdCallback(const std_msgs::String::ConstPtr &msg) {
   auto itr = bhand_grasps.find(msg->data);
   if (itr != bhand_grasps.end()) {
     pBHand->SetMotionType(itr->second);
+/*    double kp[] = {
+		50, 80, 90, 50,
+		50, 80, 90, 50,
+		50, 80, 90, 50,
+		100, 70, 60, 60
+	};
+    double kd[] = {
+		0, 0, 0, 0,
+		0, 0, 0, 0,
+		0, 0, 0, 0,
+		0, 0, 0, 0
+	};
+    pBHand->SetGainsEx(kp, kd);*/
     ROS_INFO("motion type = %d", itr->second);
   } else if (lib_cmd.compare("pdControl") == 0) {
     // Desired position only necessary if in PD Control mode
